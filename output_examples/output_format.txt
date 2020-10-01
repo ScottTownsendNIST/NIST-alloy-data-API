@@ -1,0 +1,737 @@
+output_json_format:
+{ // Required. Main trunk object
+  "TRC_data": [ // Required. A JSON array of Data objects with each object being a citation and data
+    // All comments are NOT a part of the actual data specification.
+    // Note that most of the top level branches are require elements
+    { // Required. A JSON Data object. One citation with all of it's captured data
+      "citation": { // Required. A JSON object
+        // Specify general citation elements below
+        "abstract": "<string>", // Optional. A UTF8, UTF16, UTF32, or some wide string capable of holding
+                                // I18N strings
+        "authors": [ // Required. A JSON array holding one or more strings of author names
+          "<string>", // Required. A string of the format "Last Name, FI., MI." or "Last Name, First
+                      // Name, MI." or "Last Name, First Name, Middle Name" using the western definition
+                      // of “Last Name"
+                    .
+                    .
+                    .
+          "<string>"
+        ],
+        "cas_citation": "<string>", // Optional. The Chemical Abstracts Service citation string
+        "citation_id": <integer>, // Required. The unique identifier number for this citation array
+                                  // element
+        "citation_key": { // Required. A JSON object used for uniquely defining citations and associated
+                          // system elements
+          "author1": "<string>", // Required. The author1 string which is the first 2 or 3 letters of the
+                               // principle authors last name
+          "author2": "<string>", // required if exists. The author2 string if it exists and is the first
+                               // 2 or 3 letters of the last name
+          "authorn": <integer>, // Required. A specific uniquely identifying integer for citation
+                                // differentiation
+          "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                    // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+          "version": "<string>", // Optional. A version or comment string specifying a version for a
+                                 // specific citation entry
+          "year": <integer> // Required. The identifying year the citation was either published,
+                            // submitted, or written
+        },
+        "citation_tag": [ // Optional. A JSON array holding citation tag information used for searching
+                          // citations by a tag
+          { // Required. A JSON object
+            "description": "<string>", // Optional. A string holding a descriptive text describing the
+                                       // tag
+            "id": <integer>, // Required. A unique integer holding the tag identifier for the specific
+                             // tag
+                             // stored in this citation
+            "name": "<string>" // Required. A string holding the name of the tag which is required as
+                               // this is the search term for the tag
+          },
+  
+                .
+                .
+                .
+          {...}
+        ],
+        "citation_string": "<string>", // Optional. The raw citation string that could have been used to
+                                       // generate the citation entry
+        "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                  // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+        "document_type": "<string>", // Required. A string which specifies the type of document for which
+                                     // this citation object is storing data
+        "doi": "<string>", // Optional. The DOI of the citation if it exists
+        "editors": [ // Optional. A JSON array holding one or more strings of editor names
+          "<string>", // Required. A string of the format "Last Name, FI., MI." or "Last Name, First
+                      // Name, MI." or "Last Name, First Name, Middle Name" using the western definition
+                      // of “Last Name"
+                    .
+                    .
+                    .
+          "<string>"
+        ],
+        "item_number": "<string>", // Optional. A string holding the citation item number
+        "keywords": "<string>", // Optional. A string holding any defined keywords
+        "language": "<string>", // Optional. A string holding the language of the document
+        "location": "<string>", // Optional. A string holding the publishing location or address
+        "note": "<string>", // Optional. A string holding any notes gathered during the capture of this
+                            // citation information
+        "organization": "<string>", // Optional. A string holding the organization for producing the
+                                    // citation for reports and conferences
+        "pages": "<string>", // Optional. The page numbers of an article or report that were captured for
+                             // this citation
+        "source_title": "<string>", // Optional. The title specified by the original source citation
+                                    // which might be in any language
+        "temperature_scale": "<string>", // Optional. An international temperature scale specified for
+                                         // all data in the citation
+        "title": "<string>", // Optional. A string specifying the citation's actual title as specified by
+                             // the captured document
+        "total_pages": <integer>, // Optional. An integer specifying the total number of pages in the
+                                  // captured document
+        "translation_of": <integer>, // Optional. An integer specifying the citation identifier of a
+                                     // cited work of which this citation is a translation
+        "url": "<string>", // Optional. A string holding the URL necessary to retrieve electronic version
+                           // of this cited work
+        "volume": "<string>", // Optional. A string specifying a volume as defined for articles, reports,
+                              // or conference proceedings
+        "year": <integer>, // Required. The identifying year the citation was either published,
+                           // submitted, or written
+  
+        // Specify Article/Journal specific citation elements below
+        "coden": "<string>", // Optional. A string holding the CODEN identification of the journal
+        "erratum_of": <integer>, // Optional. An integer holding the article citation identifier of a
+                                 // cited work of which this article is an erratum
+        "issue": "<string>", // Optional. A string holding the articles Journal issue for the specific
+                             // citation referenced
+        "journal_abbreviation": "<string>", // optional/Required. The abbreviated name of the journal in
+                                            // which the article was published. This element or the
+                                            // journal_full must be specified to create a link to either
+                                            // a database journal entry or a journal entry below
+        "journal_fullname": "<string>", // optional/Required. The full name of the journal in which the
+                                        // article was published. This element or the journal_abbr must
+                                        // be specified to create a link to either a database journal
+                                        // entry or a journal entry below
+  
+        // Specify Book specific citation elements below
+        "book_title": "<string>", // Optional. The book title which may be different than the citation
+                                  // title
+        "chapter": "<string>", // Optional. A string holding the chapter number/name for the book
+                               // citation referenced
+        "edition": "<string>", // Optional. A string holding the edition of the book cited
+        "isbn": "<string>", // Optional. A string holding the International Standard Book Number (ISBN)
+                            // which is a 10-13 digit number used to identify books or book-like
+                            // citations
+        "publisher": "<string>", // Optional. A string holding the name of the publishing company
+  
+        // Specify Conference Proceedings specific citation elements below
+        "conference_title": "<string>", // Optional. A string holding the name for the conference the
+                                        // proceeding document covers
+        "end_date": "<string>", // Optional. The end date string in one of four formats: Month DD, YYYY;
+                                // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+  
+        "end_month": <integer>, // Optional. An integer holding the end month (1-12) for the conference
+                                // the proceeding document covers
+        "start_date": "<string>", // Optional. The start date string in one of four formats: Month DD,
+                                  // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+        "start_month": <integer>, // Optional. An integer holding the start month (1-12) for the
+                                  // conference the proceeding document covers
+  
+        // Specify Patent specific citation elements below; patent_country and patent_number are required
+        // only if the citation is a patent
+        "patent_country": "<string>", // Optional. A string holding the name or abbreviated name of the
+                                      // country issuing the patent
+        "patent_end_date": "<string>", // Optional. The end date string in one of four formats: Month DD,
+                                       // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+        "patent_holder": "<string>", // Optional. The institution or individuals who hold the rights to
+                                     // the patents
+        "patent_number": "<string>", // Optional. A string holding the patent number issued by the
+                                     // country the patent was granted
+        "patent_start_date": "<string>", // Optional. The start date string in one of four formats: Month
+                                         // DD, YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+  
+        // Specify Thesis specific citation elements below
+        "degree": "<string>", // Optional. A string holding the degree granted to the author of the
+                              // thesis
+        "thesis_type": "<string>", // Optional. A string holding the type of thesis document this
+                                   // citation covers
+        "umi_publication_number": <integer> // Optional. An integer holding the University Microfilms
+                                            // International (UMI) Publication Number identifying the
+                                            // thesis publication
+      }, // End of citation object
+      "compounds":[ // Required. A JSON array and will contain one or more elements
+        { // Required. A JSON object
+          "ambiguity_flag": "<string>", // Optional. A string holding a code for compound ambiguity
+          "cas_number": "<string>", // Optional. A string holding the registered Chemical Abstracts
+                                   // Service (CAS) number for the compound if it is known or defined
+          "charge": <integer>, // Optional. A signed integer holding the charge of the compound
+          "compound_id": <integer>, // Required. A unique integer identifier for this compond
+          "compound_name": [ // Required. An array of objects holding the name and prefered name flag
+            {
+              "name": "<string>", // Required. A string holding a name of the compound
+              "preferred": <integer> // Required. An integer holding the preferred flag for the name. If
+                                     // 1 then this name is preferred
+            },
+                    .
+                    .
+                    .
+            {...}
+          ], // End of Compound Name array
+          "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                    // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+          "formula_extended": "<string>", // Optional. A string holding the extended version of the
+                                          // compound formula
+          "formula_hill": "<string>", // Optional. A string holding the Hill system formula of the
+                                      // compound
+          "inchi_key": "<string>", // Optional. A string holding the inchi key for this specific compound
+          "molecular_weight": <double> // Optional. A double holding the calculated molecular weight of
+                                       // the compound
+        },
+            .
+            .
+            .
+        {...} // Required. A JSON object
+      ], // End of Compounds array
+      "journals": [ // Optional. A JSON array and will contain one or more elements
+        { // Required. A JSON object
+          "abbreviated_name": "<string>", // Optional. A string holding the abbreviated name of the
+                                          // journal
+          "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                    // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+          "english_name": "<string>", // Optional. The english equivalent of the journal name if it
+                                      // differs from the full name
+          "issn_online": "<string>", // Optional. A string holding the journals online International
+                                     // Standard Serial Number if known
+          "issn_print": "<string>", // Optional. A string holding the journals print International
+                                    // Standard Serial Number if known
+          "journal_id": <integer>, // Required. A unique integer identifier for this journal
+          "name": "<string>", // Required. A string holding the full name of the journal
+          "note": "<string>", // Optional. A string holding any notes gathered during the capture of this
+                              // journal entry
+          "url": "<string>", // Optional. A string holding the URL necessary to retrieve issues of this
+                             // journal
+          "year_end": <integer>, // Optional. An integer holding the year this journal stopped publishing
+          "year_start": <integer> // Optional. An integer holding the year this journal started
+                                  // publishing
+        },
+            .
+            .
+            .
+        {...} // Required. A JSON object
+      ], // End of Journals array
+      "specimens": [ // Required. A JSON array and will contain one or more elements
+        { // Required. A JSON object
+          "compound_ids": [ // Required. A JSON array of compound identifiers which comprise this specimen
+            <integer>, // Required. An integer holding a unique compound identifier for a compound object
+                    .
+                    .
+                    .
+            <integer>
+          ], // End of Compound Identifiers array
+          "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                    // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+          "description": { // Optional. A JSON object that holds "key": "value" pairs where the "key" is
+                           // not apriori known and specifies different processing steps performed on the
+                           // specimen. Keys could include "initial", or "final" for step descriptors
+            "<string>": "<string>",
+                    .
+                    .
+                    .
+            "<string>": "<string>"
+          }, // End of Description object
+          "history": { // Optional. A JSON object of "key": "value" pairs
+            "history_id": <integer>, // Required. An integer holding a unique system history identifier
+                                     // for a history entry
+            "history_name": "<string>", // Optional. A string holding holding the name of this history
+                                        // entry
+            "history_string": "<string>" // Required. A string holding the processing history of the
+                                         // system
+          }, // End of History object
+          "impurity": [ // Optional. A JSON array of objects
+            { // Required. A JSON object holding impurity "key": "value" pairs
+              "amount": <double>, // Required. A double holding the amount of the compound in the
+                                  // impurity
+              "attribute", "<string>", // Optional. A string holding an attribute code for the impurity
+              "compound_id": <integer>, // Required. The unique identifier to a compound object that this
+                                        // impurity applies
+              "method": "<string>", // Optional. A string that states the name or description of the
+                                    // method used to determine the impurities from the specimen
+              "representation": "<string>" // Optional. A string detailing how the amount is represented:
+                                           // i.e. %, weight %, mass %
+            },
+                    .
+                    .
+                    .
+            {...}
+          ], // End of Impurity array
+          "name": "<string>", // Optional. A string holding holding the cleaned up name of this specimen
+          "note": "<string>", // Optional. A string holding any notes gathered during the capture of this
+                              // specimen object
+  
+          "parent_id": <integer>, // Optional. An integer that specifies a unique identifier for a parent
+                                  // specimen
+          "phase_purity": <double>, // Optional. A double holding the phase purity of the specimen
+          "single_crystal": "<string>", // Optional. A string holding the "T" or "F" for true or false if
+                                        // it is a single crystal specimen
+          "specimen_id": <integer> // Required. A unique integer identifier for this specimen object
+        },
+            .
+            .
+            .
+        {...} // Required. A JSON object
+      ], // End of Specimens array
+      "systems": [ // Required. A JSON array and will contain one or more elements
+        { // Required. A JSON object
+          "compound_ids": [ // Required. A JSON array of compound identifiers which comprise this system
+            <integer>, // Required. An integer holding a unique compound identifier for a compound object
+                   .
+                   .
+                   .
+            <integer>
+          ], // End of Compound Identifiers array
+          "data_sets": [ // Required. A JSON array of data set objects
+            { // Required. A JSON object
+              "atmosphere": "<string>", // Optional. A string holding the crucible atmosphere used in the
+                                        // experiment
+              "compiler": "<string>", // Optional. A string holding the name/initials of the person who
+                                      // compiled the data
+              "contributor":"<string>", // Optional. A string specifying a particular perason, project,
+                                        // institution, or general source of the data
+              "crucible": "<string>", // Optional. A string holding the material that comprises the
+                                      // crucible
+              "data": [ // Required. A JSON array holding JSON objects of data_value and variable_id
+                { // Required. A JSON object
+                  "data_values": [ // Required. A JSON array holding JSON objects of value and uncertainty
+                    { // Required. A JSON object
+                      "flawed": "<string>", // Optional. A string holding either "true" or "false" to set
+                                            // the flawed flag on the data value
+                      "uncertainty": <double>, // Optional. A double holding an uncertainty measurement
+                                               // for the data value
+                      "value": <integer> or <double> or "<string>" // Optional. A captured data value
+                    }
+                                .
+                                .
+                                .
+                    {} // Required. A JSON object
+                  ], // End of Data Values array
+                  "variable_id": <integer> // Required. An integer holding the unique variable identifier
+                                           // to a variable object
+                },
+                      .
+                      .
+                      .
+                {} // Required. A JSON object
+              ], // End of Data array
+              "data_comment": "<string>", // Optional. A string holding the comments added by the
+                                          // compiler during data capture
+              "data_set_id": <integer>, // Required. An integer holding a unique system data set
+                                        // identifier for a dataset object
+              "data_set_type": "<string>", // Optional. A string holding the code for the type of data
+                                           // entered: 'C' => "From Equation", 'Y' => "Experimental",
+                                           // 'S' => "Smoothed", 'G' => "From Graph"
+              "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                        // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+              "description": "<string>", // Optional. A string specifying the description or purpose of
+                                         // measurement
+              "flawed": "<string>", // Optional. A string holding either "true" or "false" to set the
+                                    // flawed flag on the entire data set
+              "instrumentation": [ // Optional. A JSON array of JSON objects holding instrumentation
+                                   // object data
+                { // Required. A JSON object holding instrumentation object data
+                  "brand": "<string>", // Optional. A string holding the instrument "brand" used for
+                                       // measuring the data
+                  "city": "<string>", // Optional. A string holding the name of the city of the
+                                      // manufacturer
+                  "country": "<string>", // Optional. A string holding the country of the manufacturer
+                  "customization": "<string>", // Optional. A string holding any user specific
+                                               // customization done to the instrument outside of the
+                                               // manufacturer
+                  "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                            // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+                  "instrumentation_id": <integer>, // Required. An integer holding a unique system
+                                                   // instrumentation identifier for an instrumentation
+                                                   // object
+  
+                  "instrument_name": "<string>", // Optional. A string holding the full name of the
+                                                 // instrument
+                  "instrument_short_name": "<string>", // Optional. A string holding the short name or
+                                                       // acronym of the instrument if one exists
+                  "instrument_type": "<string>", // Optional. A string describing the type of instrument
+                  "manufacturer": "<string>", // Optional. A string holding the name of the instrument
+                                              // manufacturer
+                  "model": "<string>", // Optional. A string holding the model or version of the specific
+                                       // instrument used
+                  "notes": "<string>", // Optional. A string holding any other miscellaneous notes about
+                                       // the instrument such as serial numbers, performance metrics, etc
+                  "organization_name": "<string>", // Optional. A string holding the name of the
+                                                   // organization that used the instrument in the study
+                  "organization_short_name": "<string>", // Optional. A string holding the short name or
+                                                         // acronym of the organization that used the
+                                                         // instrument in the study
+                  "province": "<string>", // Optional. A string holding any province name for the
+                                          // location of the manufacturer
+                  "region": "<string>", // Optional. A string holding any region name for the location of
+                                        // the manufacturer
+                  "state": "<string>" // Optional. A string holding any state name for the location of
+                                      // the manufacturer
+                },
+                            .
+                            .
+                            .
+                {} // Required. A JSON object holding instrumentation object data
+              ], // End of Instrumentation array
+              "lines": [ // Optional. A JSON array holding the line object identifiers that link the line
+                         // objects to the data set
+                <integer>, // Required. An integer for a line identifier for a line object
+                          .
+                          .
+                          .
+                <integer>
+              ], // End of Line Identifiers array
+              "method": "<string>", // Optional. A string holding a general method for an entire data set
+              "phase_fields": [ // Optional. A JSON array holding the phase field object identifiers that
+                                // link the phase_field objects to the data set
+                <integer>, // Required. An integer for a phase field identifier for a phase_field object
+                          .
+                          .
+                          .
+                <integer>
+              ], // End of Line Identifiers array
+              "reference_pressure_maximum": <double>, // Optional. A double holding the maximum reference
+                                                      // pressure for the experiment
+              "reference_pressure_minimum": <double>, // Optional. A double holding the minimum reference
+                                                      // pressure for the experiment
+              "reference_pressure_units": "<string>", // Optional. A string holding the units for the
+                                                      // pressure temperature for the experiment
+              "reference_temperature_maximum": <double>, // Optional. A double holding the maximum
+                                                         // reference temperature for the experiment
+              "reference_temperature_minimum": <double>, // Optional. A double holding the minimum
+                                                         // reference temperature for the experiment
+              "reference_temperature_units": "<string>", // Optional. A string holding the units for the
+                                                         // reference temperature for the experiment
+              "regions": [ // Optional. A JSON array holding the region object identifiers that link the
+                           // region objects to the data set
+                <integer>, // Required. An integer for a region identifier for a region object
+                          .
+                          .
+                          .
+                <integer>
+              ], // End of Region Identifiers array
+              "states": [ // Required. A JSON array of JSON objects holding state object data
+                { // Required. A JSON object holding state object data
+                  "attribute": "<string>", // Optional. A string holding either a code or a full string
+                                           // for the state "Equilibrium" attribute
+                  "compound_id": <integer>, // Optional. An integer for a compound identifier for a
+                                            // compound object
+  
+                  "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                            // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+                  "description": "<string>", // Optional. A string holding a description of the state
+                  "error_flag": "<string>", // Optional. A string holding either "true" or "false"
+                                            // specifying whether or not the state is viewed as having an
+                                            // error in definition. Defaults to false
+                  "metastable_phase_flag": "<string>", // Optional. A string holding either "true" or
+                                                       // "false" specifying whether or not the phase is
+                                                       // a metastable phase. Defaults to false
+                  "partially_known_phase_flag": "<string>", // Optional. A string holding either "true"
+                                                            // or "false" specifying whether or not the
+                                                            // phase for the state is only partially
+                                                            // known. Defaults to false
+                  "phase_basis": "<string>", // Optional. A string holding either a code or a full string
+                                             // specifying an assignment basis for the phase of the state
+                  "phase_id": <integer>, // Optional. An integer for a phase identifier for a phase
+                                         // object
+                  "phase_method": "<string>", // Optional. A string holding either a code or a full
+                                              // string specifying the method used to measure the phase
+                  "phase_state": "<string>", // Optional. A string holding either a phase type code or an
+                                             // arbitrary string defining a phase
+                  "region_id": <integer>, // Optional. An integer for a region identifier for a region
+                                          // object
+                  "solvents": [ // Optional. A JSON array of "<string>" specifying solvents used in the
+                                // experiment
+                    "<string>", // Required. A string holding a solvent used in the experiment
+                                .
+                                .
+                                .
+                    "<string>"
+                  ], // End of Solvents array
+                  "specimen_id": <integer>, // Optional. An integer for a specimen identifier for a
+                                            // specimen object
+                  "state_id": <integer>, // Required. An integer holding a unique system state identifier
+                                         // for an state object
+                  "state_role": "<string>" // Optional. A string holding either a code or a full string
+                                           // of the state object's current role in the system
+                },
+                        .
+                        .
+                        .
+                {} // Required. A JSON object holding state object data
+              ], // End of States array
+              "variables": [ // Required. A JSON array of JSON objects holding variable (metadata) object
+                            // data
+                { // Required. A JSON object holding variable (metadata) object data
+                  "attribute_name": "<string>", // Optional. A string holding the name of the attribute
+                                                // which is used to hold static extra data associated
+                                                // with the variable such as wavelength for radiance
+                                                // temperature data
+                  "attribute_value": <double>, // Optional. A double holding the value of the attribute
+                                               // which is used to hold extra static data
+                  "component_compound_id": <integer>, // Optional. An integer for a compound identifier
+                                                      // to a compound object
+                  "confidence": <integer>, // Optional. An integer holding the coverage factor percentage
+                  "data_type": "<string>", // Required. A string holding the data type for the data
+                                           // associate with this variable  and may be "integer" or
+                                           // "double" for numeric data types and "string" or "bool" for
+                                           // non-numeric data types
+                  "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                            // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+                  "derived_from_id": <integer>, // Optional. An integer holding the variable identifier
+                                                // of the variable from which these values are derived
+                  "instrumentation_id": <integer>, // Optional. An integer for a instrumentation
+                                                   // identifier to an instrumentation object
+                  "method": "<string>", // Optional. A string holding the name/description of the method
+                                        // used to obtain data
+                  "method_details": "<string>", // Optional. A string holding additional information to
+                                                // include about the method used to determine the data
+                  "per_component_compound_id": <integer>, // Optional. An integer for a compound
+                                                          // identifier to a compound object
+                  "per_state_id": <integer>, // Optional. An integer for a state identifier for a state
+                                             // object
+                  "reference_pressure": <double>, // Optional. A double holding the reference pressure
+                                                  // used for a control pressure in experimental
+                                                  // measurements
+                  "reference_pressure_units": "<string>", // Optional. A string holding the reference
+                                                          // pressure units
+                  "reference_state_description": "<string>", // Optional. A string holding the
+                                                             // description for the reference state for
+                                                             // attribute
+                  "reference_state_id": <integer>, // Optional. An integer for a state identifier for a
+                                                   // state object
+                  "reference_temperature": <double>, // Optional. A double holding the reference
+                                                     // temperature used for a control temperature in
+                                                     // experimental measurements
+                  "reference_temperature_units": "<string>", // Optional. A string holding the reference
+                                                             // temperature units
+                  "repetitions": <integer>, // Optional. An integer holding the number of measurements
+                                            // performed that affect uncertainty
+                  "representation": "<string">, // Optional. A string holding the representation of the
+                                                // measurement
+                  "solvent_used": "<string>", // Optional. A string holding either "true" or "false"
+                                              // specifying whether or not the primary compound has been
+                                              // dissolved in a solvent
+                  "solvents": [ // Optional. A JSON array of "<string>" specifying solvents used in the
+                                // experiment
+                    "<string>", // Required. A string holding a solvent used in the experiment
+                              .
+                              .
+                              .
+                    "<string>"
+                  ], // End of Solvent array
+                  "standard_state_description": "<string>", // Optional. A string holding the definition
+                                                            // or description of the standard state of
+                                                            // the measurement
+                  "standard_state_id": <integer>, // Optional. An integer for a state identifier for a
+                                                  // state object
+                  "state_id": <integer>, // Optional. An integer for a state identifier for a state
+                                         // object
+                  "temperature_scale": "<string>", // Optional. A string holding the temperature scale
+                                                   // defined for the temperature measurements
+                  "to_component_compound_id": <integer>, // Optional. An integer for a compound
+                                                         // identifier to a compound object
+                  "uncertainty_type": "<string>", // Optional. A string holding the uncertainty type
+                                                  // (such as calculated from standard deviation)
+                  "units": "<string>", // Optional. A string holding the units for the variable
+                  "variable_id": <integer>, // Required. An integer holding a unique system variable
+                                            // identifier for an variable object
+                  "variable_name": "<string>", // Required. A string holding the name of the variable
+                  "variable_role": "<string>", // Required. A string holding the role of the variable
+                                               // this object defines, either "property" or "variable" or
+                                               // "constraint"
+                  "variable_type": "<string>" // Optional. A string holding the type of variable this
+                                              // object defines; either "fixed" or "varying"
+                },
+                            .
+                            .
+                            .
+                {} // Required. A JSON object holding variable (metadata) object data
+              ] // End of Variables array
+            },
+                  .
+                  .
+                  .
+            {...} // Required. A JSON object
+          ], // End of DataSets array
+          "date_added": "<string>", // Optional. A date string in one of four formats: Month DD, YYYY;
+                                    // MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+          "history": [ // Optional. A JSON array
+            { // Required. A JSON object of "key": "value" pairs
+              "history_id": <integer>, // Required. An integer holding a unique system history identifier
+                                       // for a history entry
+              "history_name": "<string>", // Optional. A string holding holding the name of this history
+                                          // entry
+              "history_string": "<string>" // Required. A string holding the processing history of the
+                                           // system
+            },
+                .
+                .
+                .
+            {...} // Required. A JSON object
+          ], // End of History array
+          "lines": [ // Optional. A JSON array of line objects
+            { // Required. A JSON object of "key": "value" pairs
+              "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                        // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+              "hight": "<string>", // Optional. A string holding either "true" or "false" to determine if
+                                   // the region ID 2 specifies the High Temperature (High T) value
+              "line_attributes": "<string>", // Optional. A string holding optional attribute information
+                                             // about the line
+              "line_basis": "<string>", // Optional. A string holding the line basis information
+              "line_id": <integer>, // Required. An integer holding a unique system line identifier for a
+                                    // line object
+              "line_name": "<string>", // Optional. A string holding the given name for the line object
+              "invariant_line": "<string>", // Optional. A string holding either "true" or "false" to
+                                            // determine if the line is invariant (a collapsed region).
+                                            // The default is false
+              "region_ids": [ // Required. A JSON array of region identifiers (usually will hold 1 or 2
+                             // region identifiers)
+                <integer>, // Required. An integer holding a unique region identifier for a region object
+                            .
+                            .
+                            .
+                <integer>
+              ] // End of Region Identifiers array
+            },
+                  .
+                  .
+                  .
+            {...} // Required. A JSON object
+          ], // End of Lines array
+          "phases": [ // Optional. A JSON array of phase objects
+            { // Required. A JSON object of "key": "value" pairs
+              "common_name": "<string>", // Optional. A string holding the common name for the phase
+                                         // object
+              "compound_ids": [ // Optional. A JSON array of compound identifiers
+                <integer>, // Required. An integer holding a unique compound identifier for a compound
+                           // object
+                       .
+                       .
+                       .
+                <integer>
+              ], // End of Compound Identifiers array
+              "crystal_lattice": "<string>", // Optional. A string holding the determined crystal
+                                             // structure, e.g. cubic, rhombahedral, triclinic, etc.
+              "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                        // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+              "magnetic_state": "<string>", // Optional. A string holding the name/code of the magnetic
+                                            // state of the phase
+              "meta_stable": "<string>", // Optional.  A string holding either "true" or "false"
+                                         // indicating the instability of phase
+              "pearson_symbol": "<string>", // Optional. A string holding a description of the
+                                            // crystallographic structure
+              "phase_id": <integer>, // Required. An integer holding a unique system phase identifier for
+                                     // a phase object
+              "phase_name": "<string>", // Optional. A string holding the name of the phase object
+              "sgte_name": "<string>", // Optional. A string holding the codes used in the CALPHAD
+                                       // community to identify specific phases for metal alloy data
+              "space_group": "<string>", // Optional. A string holding the description of symmetry of
+                                         // phase using space group
+              "space_group_number": <integer>, // Optional. An integer specifying the assignment of
+                                               // symmetry in crystal by space group number
+              "strukturbericht": "<string>", // Optional. A string specifying the classification of phase
+                                             // according to Strukturbericht journal
+              "super_conductive": "<string>", // Optional. A string holding either "true" or "false"
+                                              // indicating if the phase is in a super conductive state
+              "type": "<string>", // Required. A string holding the code or decoded string of the type of
+                                  // phase. I.E. "L" for a liquid phase
+              "wyckoff_sequence": "<string>" // Optional. A string specifying the description of atom
+                                             // locations in the phase
+            },
+                    .
+                    .
+                    .
+            {...} // Required. A JSON object
+          ], //End of Phases array
+          "phase_fields": [ // Optional. A JSON array of phase_field objects
+            { // Required. A JSON object of "key": "value" pairs
+              "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                        // YYYY; MM/DD/YYYY; Mon-DD-YYYY; YYYY-MM-DD
+              "phases": [ // Required. A JSON array holding the JSON object of phase_id and
+                         // zero_phase_fraction
+                { // Required. A JSON object of "key": "value" pairs of phase_id and zero_phase_fraction
+                  "phase_id": <integer>, // Required. An integer holding the unique phase identifier for
+                                         // a phase object
+                  "zero_phase_fraction": "<string>" // Required. A string  holding either "true" or
+                                                    // “false” indicating whether this phase is in a zero
+                                                    // phase fraction status (I.E. on a boundry)
+                },
+                            .
+                            .
+                            .
+                {} // Required. A JSON object of "key": "value" pairs of phase_id and zero_phase_fraction
+              ], // End of Phase and Zero Phase Fraction Identifiers array
+              "phase_field_id": <integer>, // Required.  An integer holding a unique system phase_field
+                                           // identifier for a phase field object
+              "point": "<string>" // Optional. A string  holding either "true" or "false" indicating
+                                  // whether the phase_field defines a point like a Eutectic, Eutectoid,
+                                  // or Peritectoid
+            },
+                    .
+                    .
+                    .
+            {...} // Required. A JSON object
+          ], // End of PhaseFields array
+          "regions": [ // Optional. A JSON array of region objects
+            { // Required. A JSON object of "key": "value" pairs
+              "complete": "<string>", // Optional. A string holding either "true" or "false" indicating
+                                      // if the region has been defined completely
+              "date_added": "<string>", // Optional. A date string in one of four formats: Month DD,
+                                        // YYYY; MM/DD/YYYY; Mon-DD-YYYY;  YYYY-MM-DD
+              "phase_ids": [ // Required. A JSON array of phase identifiers
+               <integer>, // Required. An integer holding a unique phase identifier for a phase object
+                    .
+                    .
+                    .
+               <integer>
+              ], // End of Phase Identifiers array
+              "region_id": <integer>, // Required. An integer holding a unique system region identifier
+                                       // for a region object
+              "region_name": "<string>", // Optional. A string holding the name of the region object
+              "region_role": "<string>" // Optional. A string holding either the full string description
+                                         // or the code for the role (full region or invariant
+                                         // line/collapsed region)
+            },
+                    .
+                    .
+                    .
+            {...} // Required. A JSON object
+          ], // End of Regions array
+          "specimen_ids": [ // Optional. A JSON array of specimen identifiers
+            <integer>, // Required. An integer holding a unique specimen identifier for a specimen object
+                    .
+                    .
+                    .
+            <integer>
+          ], // End of Specimen Identifiers array
+          "system_id": <integer> // Required. A unique integer identifier for this system object
+        },
+            .
+            .
+            .
+        {...} // Required. A JSON object
+      ], // End of System array
+  
+  
+      "version": { // Optional. A JSON object
+        "datetime_added": "<string>", // Required. A datetime string in the format: YYYY-MM-DD HH:Min:Sec
+        "notes": "<string>", // Optional. A string holding any notes added to describe the state of the
+                             // data in this JSON file
+        "md5_hash": "<string>" // Required. A generated MD5 hash to uniquely define this specific version
+                               // of the JSON file
+      } // End of Version object
+    } // End of Data object
+       .
+       .
+       .
+    {...} // Required. A JSON object
+  ], // End of Data array
+  "number_of_citations": <integer>, // Required. An integer holding the number of elements in the array above
+  "saved_state_hash": <string> // Optional. The MD5 hash name of the saved state used to do paging and state operations if paging is requested
+} // End of main trunk 
+      

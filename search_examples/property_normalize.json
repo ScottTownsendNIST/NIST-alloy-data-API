@@ -1,0 +1,8 @@
+{
+   "citations_per_page": 20,
+   "property_search_code":"MSS",
+   "start_year": 1970,
+   "end_year": 1979,
+   "normalize_functions": ["Temperature"]
+}
+

@@ -1,0 +1,77 @@
+input_json_format:
+    {
+        // JSON elements for paging/saved state
+        "citations_per_page": <integer>, // The number of citations to display per returned JSON "page".
+
+        // JSON elements for compound search (can not be combined with other searches)
+        "exclude_all": <string>, // The string will be either "True" or "False" and nothing else is allowed. This is a search parameter that requires the "required_compounds".
+        "required_compounds": [<string>,<string>,...,<string>], // This is the comma separated list of compound names like "Ti", "Al", "Ni" in which to require as part of the search.
+        "required_or": <string>, // The string will be either "True" or "False" and nothing else is allowed. This is a search parameter that requires the "required_compounds" to use the "compound1 or compound2" rather than the default "compound1 and compound2" database set operation.
+        "excluded_compounds": [<string>,<string>,...,<string>], // This is a comma separated list of compound names in which to exclude from a search.
+        "optional_compounds": [<string>,<string>,...,<string>], // This is a comma separated list of optional compound names which may be present in an alloy but not required. 
+
+        // JSON elements for citation search (can not be combined with other searches)
+        "author_full_name": [<string>,<string>,...,<string>], // This is a comma separated list of author full names.
+        "author_last_name": [<string>,<string>,...,<string>], // This is a comma separated list of author last names.
+        "doi": <string>, // The doi string to find the citation and its data.
+        "journal_name": <string>, // The full journal name in which to find citations.
+        "journal_abbrev": <string>, // A well known abbreviation of the journal name.
+        "keywords": [<string>,<string>,...,<string>] // A comma separated list of keywords.
+        "partial_author_match": <string>, // The string will be either "True" or "False" and nothing else is allowed and is used to determine if a fuzzy search is done on author last name. This is a search parameter that requires the "author_last_name". Default is false!
+        "partial_title_match": <string>, // The string will be either "True" or "False" and nothing else is allowed and is used to determine if a fuzzy search is done on title. This is a search parameter that requires the "title". Default is false!
+        "title": <string>, // The title string to find the citation and its data.
+
+        // JSON elements for data set searches (can not be combined with other searches)
+        "data_set_id": <integer>, // A specific data set identifier to return a specific data set.
+
+        // JSON elements for property searches (can not be combined with other searches)
+        "property_search_code": <string>, // A specific property code which to return data.
+
+        // JSON elements for data reduction by parameters
+        "pressure": <double>, // A static pressure value which returned data sets must contain in kPa.
+        "start_pressure": <double>, // The start of a pressure range in kPa which returned data sets must contain a pressure in the range. If no end_pressure it is an open ended range.
+        "end_pressure": <double>, // The end of a pressure range in kPa which returned data sets must contain a pressure in the range. If no start_pressure the range automatically starts at 0 kPa.
+        "temperature": <double>, // A static temperature value which returned data sets must contain in K.
+        "start_temperature": <double>, // The start of a temperature range in K which returned data sets must contain a temperature in the range. If no end_temperature it is an open ended range.
+        "end_temperature": <double>, // The end of a temperature range in K which returned data sets must contain a temperature in the range. If no start_temperature the range automatically starts at 0 K.
+        "year": <integer>, // An exact year which published citations must have this exact publishing date.
+        "start_year": <integer>, // The start of a year range which returned citations must be published in the range. If no end_year it is an open ended range.
+        "end_year": <integer>, // The end of a year range which returned citations must be published in the range. If no start_year the range is open ended.
+        "data_set_type": <string>, // The character will be "Y", "C", "S", "G" for "Data from Experiment", "Data from equation", "Smoothed Data", "Data from Graph" respectively. Return data must be so categorized. 
+        "property_reduce_code": <string>, // A specific property code which all return data must contain and is used for citation and compound searches (not property searches).
+    }
+
+Example one: 
+    {
+        "exclude_all": "True",
+        "required_compounds": ["Ti","Ni"],
+        "optional_compounds": ["Al"],
+        "required_or": "True",
+        "year": 1993
+    }
+
+Example two: 
+    {
+        "exclude_all": "True",
+        "required_compounds": ["Ti","Ni"],
+        "optional_compounds": ["Al"],
+        "start_year": 1955,
+        "end_year": 2016,
+        "data_set_type": "G"
+    }
+
+Example three: 
+    {
+        "author_last_name": ["Wilthan"],
+        "doi": "10.100710765-005-6682-z",
+        "property_reduce_code": "H",
+        "year": 2005
+    }
+
+Example four: 
+    {
+        "citations_per_page": 20,
+        "property_search_code":"WB",
+        "year": 2005
+    }
+

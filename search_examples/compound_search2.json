@@ -1,0 +1,9 @@
+{
+   "exclude_all":"True",
+   "required_compounds":["Ti","Ni"],
+   "optional_compounds":["Al"],
+   "start_year": 1955,
+   "end_year": 2016,
+   "data_set_type": "G"
+}
+
