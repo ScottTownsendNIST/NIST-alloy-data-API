@@ -29,5 +29,6 @@ Directory Structure
 
 
 .. _Boris Wilthan: mailto:boris.wilthan@nist.gov
+.. _Scott Townsend: mailto:scott.townsend@nist.gov
 .. _`doi:10.18434/M32153`: https://doi.org/10.18434/M32153
 
