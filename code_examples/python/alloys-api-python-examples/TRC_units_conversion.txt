@@ -1,0 +1,13 @@
+Torr = torr
+G = gauss
+Gauss = gauss
+GAUSS = gauss
+Poise = poise
+mkm = microm
+Angstrom = angstrom
+Ampere = ampere
+Oersted = oersted
+Stoke = stokes
+calorie_g_K = [energy1]
+Btu_lb = 1.799 * 10**9 * calorie_g_K
+Btu_K_lb = 1.819 * 10**3 * calorie_g_K
